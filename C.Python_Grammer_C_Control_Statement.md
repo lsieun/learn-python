@@ -1,6 +1,6 @@
 # Python基础:控制语句 #
 
-## if语句 ##
+## 1、if语句 ##
 
 	if <条件判断1>:
 	    <执行1>
@@ -11,7 +11,7 @@
 	else:
 	    <执行4>
 
-## for循环 ##
+## 2、for循环 ##
 
 Python中常用的结构有list/dict/set/tuple，它们都可以使用for循环。
 
@@ -50,14 +50,14 @@ tuple
 	    print(item)
 
 
-## while循环 ##
+## 3、while循环 ##
 
 	n = 0
 	while n <= 10:
 	    print(n)
 	    n += 1
 
-## while和for循环语句中的continue和break关键字 ##
+## 4、while和for循环语句中的continue和break关键字 ##
 
 while中的break
 

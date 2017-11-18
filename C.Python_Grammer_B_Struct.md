@@ -7,7 +7,7 @@ Python：list、dict(dictionary,map)、set、元组（元素的组合）
 
 > Python中好像没有“数组”，但多了“元组”
 
-## list ##
+## 1、list ##
 
 Python内置的一种类型是列表：list。list是一种有序的集合，可以随时添加和删除其中的元素。list有序集合中的元素，可以是list。
 
@@ -66,7 +66,7 @@ list操作：定义、增加元素、删除元素、修改元素、判断元素�
 
 ![](images/python_grammer_struct_List_int.png)
 
-## dict(dictionary map) ##
+## 2、dict(dictionary map) ##
 
 dict全称dictionary，在其他语言中也称为map，使用key-value存储，具有极快的查找速度。
 
@@ -150,7 +150,7 @@ dict操作：定义、增加元素、删除元素、修改元素、判断元素�
 
 ![](images/python_grammer_struct_dict_for.png)
 
-## set ##
+## 3、set ##
 
 set可以看成数字意义上的无序和无重复元素的集合
 
@@ -211,7 +211,7 @@ set操作：定义、增加元素、删除元素、判断是否存在、打印�
 
 ![](images/python_grammer_struct_set_for.png)
 
-## tuple ##
+## 4、tuple ##
 
 tuple（元组），即元素的组合。tuple是另一种有序列表，它和list非常类似，但是tuple一旦初始化就不能修改。tuple中的元素可以是不同类型的。
 
