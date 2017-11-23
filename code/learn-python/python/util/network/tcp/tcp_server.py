@@ -9,7 +9,17 @@ import threading
 
 def run(sock,addr):
     print(addr)
-    sock.send("Hello World")
+    #sock.send("Hello World".encode(encoding="utf-8"))
+    sock.send(bytes("Hello WorldAAA",encoding="utf-8"))
+    #str转换成byte数组的两种方式
+    #（1）直接通过str.encode(encoding="utf-8")
+    #（2）通过bytes("字符串",encoding="utf-8")得到比特数组
+    while True:
+        data = sock.recv(1024).decode("utf-8")
+        if data != "":
+            print(data)
+            sock.send((data + " 是的呢").encode("utf-8"))
+
 
 #网络通信的基本知识
 #family=AF_INET, type=SOCK_STREAM, proto=0
