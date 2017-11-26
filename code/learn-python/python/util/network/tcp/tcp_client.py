@@ -4,10 +4,9 @@
 3、获取数据，并打印出来
 """
 import socket
-
-#1、创建一个socket_client对象
 import time
 
+#1、创建一个socket_client对象
 socket_client = socket.socket(family=socket.AF_INET, type=socket.SOCK_STREAM)
 #2、连接服务器
 socket_client.connect(("127.0.0.1",8888))
