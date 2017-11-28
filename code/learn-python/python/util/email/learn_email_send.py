@@ -3,20 +3,19 @@ from email.header import Header
 from email.mime.text import MIMEText
 from email.utils import formataddr
 
-from_name = "9527"
-from_email = "maoxiangyi@itcast.cn"
+from_name = "zhangsan"
+from_email = "zhangsan@lsieun.com"
 
-to_name = "zhangsan"
-to_email = "maoxiangyi@itcast.cn"
+to_name = "李四"
+to_email = "lisi@lsieun.com"
 
-title = "abc"
-content = "Hello World"
+title = "my first python 邮件"
+content = "Hello World，你好,python"
 
+smtp_addr = "192.168.80.128" #smtp.lsieun.com
 
-smtp_addr = "smtp.itcast.cn"
-
-user="maoxiangyi@itcast.cn"
-passwd = "123455"
+user="zhangsan@lsieun.com"
+passwd = "123456"
 
 msg = MIMEText(content,'plain',"utf-8")
 #msg是一个map
