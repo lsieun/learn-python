@@ -68,3 +68,20 @@ Python2.x版本和3.x版本不是连续的两个版本，可以当做独立的�
 
 ![](images/console_python_print_hello_python.png)
 
+从python shell進入和退出：
+
+	#進入python shell
+	python
+	#退出python shell
+	exit()
+
+打印python的關鍵字：
+
+```python
+>>> import keyword
+>>> keyword.kwlist
+['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
+```
+
+
+
