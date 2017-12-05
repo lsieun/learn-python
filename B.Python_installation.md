@@ -15,6 +15,9 @@ Python2.x版本和3.x版本不是连续的两个版本，可以当做独立的�
 
 ![](images/python_begginer_guide_download.png)
 
+>There are currently two different supported versions of Python, 2.7 and 3.5. Somewhat confusingly, Python 3.0 introduced many backwards-incompatible changes to the language, so code written for 2.7 may not work under 3.5 and vice versa. For this class all code will use Python 3.5.
+
+>You can check your Python version at the command line by running `python --version`.
 
 ## 2、下载Python ##
 
@@ -68,6 +71,10 @@ Python2.x版本和3.x版本不是连续的两个版本，可以当做独立的�
 
 ![](images/console_python_print_hello_python.png)
 
+查看python的版本，使用命令：`python --version`命令
+
+![](images/python_version.png)
+
 从python shell進入和退出：
 
 	#進入python shell
@@ -83,5 +90,24 @@ Python2.x版本和3.x版本不是连续的两个版本，可以当做独立的�
 ['False', 'None', 'True', 'and', 'as', 'assert', 'break', 'class', 'continue', 'def', 'del', 'elif', 'else', 'except', 'finally', 'for', 'from', 'global', 'if', 'import', 'in', 'is', 'lambda', 'nonlocal', 'not', 'or', 'pass', 'raise', 'return', 'try', 'while', 'with', 'yield']
 ```
 
+## 6、小示例 ##
+
+Python is a high-level, dynamically typed multiparadigm programming language. Python code is often said to be almost like pseudocode, since **it allows you to express very powerful ideas in very few lines of code** while being very readable. As an example, here is an implementation of the classic quicksort algorithm in Python:
+
+```python
+def quicksort(arr):
+    if len(arr) <= 1:
+        return arr
+    pivot = arr[len(arr) // 2]
+    left = [x for x in arr if x < pivot]
+    middle = [x for x in arr if x == pivot]
+    right = [x for x in arr if x > pivot]
+    return quicksort(left) + middle + quicksort(right)
+
+print(quicksort([3,6,8,10,1,2,1]))
+# Prints "[1, 1, 2, 3, 6, 8, 10]"
+```
+
+![](images/python_quicksort.png)
 
 

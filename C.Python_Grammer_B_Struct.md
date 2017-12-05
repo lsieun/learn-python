@@ -2,7 +2,7 @@
 
 数据结构：
 
-Java：数组、list、map、set
+Java：数组、list、map、set  
 Python：list、dict(dictionary,map)、set、元组（元素的组合）
 
 > Python中好像没有“数组”，但多了“元组”
