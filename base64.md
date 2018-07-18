@@ -14,7 +14,7 @@ print(base64_str) # 5L2g5aW9
 # 解密
 data = base64_str.encode("UTF8")
 decoded_bytes = base64.b64decode(data)
-dest_str = decoded_bytes.decode("UTF*")
+dest_str = decoded_bytes.decode("UTF8")
 print(dest_str) # 你好
 ```
 
