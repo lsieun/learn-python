@@ -184,4 +184,11 @@ Python的多态是伪多态，是鸭子类型：在python语言中，对类检�
 	    person = Person()
 	    person.printAnimal(a)
 
+
+## 4、魔法方法 ##
+
+- 在Python中，方法名如果是`__xxx__()`的，那么就有特殊的功能，因此叫作“**魔法**”方法
+- 当使用print输出对象的时候，只要自己定义了`__str__(self)`方法，那么就会打印在这个方法中return的数据。
+
+
 > 至此结束
