@@ -37,7 +37,7 @@ Python的常用操作有：文件操作、日期类、集合、Urllib、网络�
 	#写文件（覆盖写）
 	path = "D://mynote.txt"
 	f = open(path,"w",encoding="utf-8")
-	f.write("我爱阿芬")
+	f.write("我爱Python")
 	f.close()
 
 ### 1.4、追加写入 ###
@@ -46,7 +46,7 @@ Python的常用操作有：文件操作、日期类、集合、Urllib、网络�
 	path = "D://mynote.txt"
 	f = open(path,"a",encoding="utf-8")
 	f.write("\r\n")
-	f.write("阿芬也爱我")
+	f.write("Python爱我")
 	f.close()
 
 ### 1.5、异常处理的两种方式 ###

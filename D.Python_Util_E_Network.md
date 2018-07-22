@@ -280,12 +280,12 @@ socket类的构造器定义如下：
 	
 	#发送数据到服务端
 	socket_client.send("我爱Python".encode(encoding="utf-8"))
-	socket_client.send("我爱阿芬".encode(encoding="utf-8"))
+	socket_client.send("我爱Java".encode(encoding="utf-8"))
 	
 	while True:
 	    data = socket_client.recv(1024).decode("utf-8")
 	    if data != "":
 	        print(data)
 	        time.sleep(1)
-	        socket_client.send("我爱阿芬".encode(encoding="utf-8"))
+	        socket_client.send("我爱Scala".encode(encoding="utf-8"))
 > 至此结束
