@@ -1,6 +1,6 @@
-# coroutine
+# Coroutine (1) 什么是协程
 
-## 认知的边界
+## 1、认知的边界
 
 > 只要是人，都是依靠自己的**知识**与**认知**并且也被之束缚的生活着的，那就叫做现实，但是知识和认知是暧昧不清的东西，现实也许也只是镜花水月，人都是活在自己的执念中的，你不这么认为吗？——《火影忍者》宇智波鼬
 
@@ -26,11 +26,13 @@ Reference: https://www.mangapanda.com/naruto/385/6
 > 颜回解释道：“老师你误会了，刚才我见饭里有些黑色的米饭，可能是柴火灰吹上去了，我又不敢浪费粮食，所以先把黑色的饭先吃了。”
 > 孔子感叹：“亲眼所见的东西也不一定是你所想的那样呀，你们大家以为看事情，要先经过自己的调查和思考呀。”
 
-## coutine vs suroutine
+## 2、Coroutine
 
 - `routine`: 可以理解成一个function
 - `subroutine`: sub + routine = sub function
 - `coroutine`: co + routine = co(operative) function
+
+### 2.1、星期天：洗衣服、打游戏
 
 洗衣服：
 - 加水、洗衣液、放衣服(6分钟)
@@ -120,6 +122,9 @@ cprint("星期天：到中午了，该吃饭了","white")
 
 ```
 
+![](images/wash_and_play.png)
+
+### 2.2、小明沏茶
 
 问题：妈妈让小明给客人烧水沏茶．洗开水壶要用1分钟，烧开水要用15分钟，洗茶壶要用1分钟，洗茶杯要用1分钟，拿茶叶要用2分钟．小明估算了一下，完成这些工作要花20分钟．为了使客人早点喝上茶，按你认为最合理的安排，多少分钟就能沏茶了？
 
@@ -194,36 +199,11 @@ if __name__ == '__main__':
 
 ```
 
-
-协程，从几个方面来回答它呢？
-（1）与它做对比的对象：subroutine、线程（thread）。与subroutine做对比，是因为coroutine的本质也是routine，但是subroutine和coroutine的执行过程有区别。
-
-把视角稍微抬高一点，会发现：subroutine和coroutine都是在1个线程中执行的。
-
-把视角再抬高一点，会发现：多个线程也进行并发完成任务，多个线程是在同1个进程当中执行的。
-
-把视角再抬高一点，会发现：多个进程也可以进行并发，这多个进程是在同1个服务器（电脑／笔记本／服务器）中运行的。
-
-把视角再抬高一点，会发现：多个服务器也可以进行并发，这多个服务器是在同1个工作组（包含多个服务器）中的。
-
-将coroutines和threads进行比较，它们本质上是不同层次的东西：coroutines是在同1个thread(线程)当中的多个routine进行合作／协作(cooperate)；而threads是在同1个Process(进程)当中的多个thread进行合作。
-
-将coroutines和threads进行比较，只是因为它们在运行结果的表现形式上，存在某种相似性，这种相似性就是：并发(concurrency)。
-
-三个层次的并发：
-
-- 进程并发
-- 线程并发
-- routine并发
-
-总结：
-
-Coroutines are generalizations of the normal "subroutines". The main difference is that each invocation of a subroutine has the same starting point and the same end point all the time, while a coroutine has multiple entry points and multiple pathways. 
-
-
-## Coroutines vs Subroutines
+## 3、Coroutines vs Subroutines
 
 Reference: https://www.hackingnote.com/en/versus/subroutine-vs-coroutine/
+
+Coroutines are generalizations of the normal "subroutines". The main difference is that each invocation of a subroutine has the same starting point and the same end point all the time, while a coroutine has multiple entry points and multiple pathways. 
 
 Coroutine:
 
@@ -236,16 +216,4 @@ Subroutine:
 
 - invoked once and executes until it completed
 - can be translated to a coroutine which does not call yield
-
-Coroutines vs Threads
-
-The difference between **coroutines** and **threads** is that rather than have the **OS** schedule execution of the various **threads**, **the developer** is free to schedule the execution of the **coroutines**. This is why they may be referred to as `lightweight threads` or `green threads`.
-
-
-Assembly Language Co-Routines： https://slideplayer.com/slide/9856584/
-
-
-
-
-
 
