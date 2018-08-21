@@ -7,7 +7,7 @@ The Python **Global Interpreter Lock** or `GIL`, in simple words, is a **mutex**
 > GIL是Global Interpreter Lock的缩写。  
 > 在同一个时间内，只有一个线程可以拿到Python interpreter的控制权。
 
-This means that **only one thread** can be in **a state of execution**(状态)) at **any point in time**(时间)). The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound(计算密集型) and multi-threaded code.
+This means that **only one thread** can be in **a state of execution**(状态)) at **any point in time**(时间). The impact of the GIL isn’t visible to developers who execute single-threaded programs, but it can be a performance bottleneck in CPU-bound(计算密集型) and multi-threaded code.
 
 > 这也就意味着，在任何时间，只有一个线程是处于运行状态的。  
 > bound，有“约束”的意思，CPU-bound是受“CPU约束”的意思，更进一步理解为“计算密集型”。

@@ -15,6 +15,7 @@ The `I/O` term there means that we use `Asyncio` to handle **I/O bound tasks** a
 
 > IO部分则表示处理等待IO的任务。  
 > 我感觉自己没有很好的理解bound task。
+> bound有“约束”的意思，IO bound也就是受IO速度约束（IO速度是瓶颈），CPU bound是受CPU速度约束（CPU速度是瓶颈）。
 
 If you are doing, for instance, a lot of math processing, you are waiting on the processor – which is **a CPU bound task**. If on the other hand, you are waiting on say a result from the network or result from the database or an input from the user, the task is **I/O bound**.
 
