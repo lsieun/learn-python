@@ -21,17 +21,17 @@ One of the lesser known facts about Python’s `for` loop is that it can include
 
 ### List: list comprehensions
 
-Bad Code:
+Bad Code: `code/list_comprehension_bad_code.py`
 
 ```python
 num_list = range(10)
-prime_num_list = list()
+some_list = list()
 for num in num_list:
     if is_prime(num):
-        prime_num_list.append(num)
+        some_list.append(num + 5)
 ```
 
-Good Code:
+Good Code: `code/list_comprehension_good_code.py`
 
 ```python
 num_list = range(10)
@@ -42,15 +42,31 @@ some_list = [
 ]
 ```
 
-Full Code:
+### List: `* operator`
+
+Bad Code: `code/asterisk_operator_bad_code.py`
 
 ```python
-
+some_list = ['a', 'b', 'c', 'd', 'e']
+(first, second, rest) = some_list[0], some_list[1], some_list[2:]
+print(rest)
+(first, middle, last) = some_list[0], some_list[1:-1], some_list[-1]
+print(middle)
+(head, penultimate, last) = some_list[:-2], some_list[-2], some_list[-1]
+print(head)
 ```
 
+Good Code: `code/asterisk_operator_good_code.py`
 
-
-
+```python
+some_list = ['a', 'b', 'c', 'd', 'e']
+(first, second, *rest) = some_list
+print(rest)
+(first, *middle, last) = some_list
+print(middle)
+(*head, penultimate, last) = some_list
+print(head)
+```
 
 
 
