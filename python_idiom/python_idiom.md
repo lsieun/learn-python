@@ -68,14 +68,109 @@ print(middle)
 print(head)
 ```
 
+### Dict: dict get
 
+Bad Code:
 
+```python
+log_severity = None
+if 'severity' in configuration:
+    log_severity = configuration['severity']
+else :
+    log_severity = 'Info'
+```
 
+Good Code:
 
+```python
+log_severity = configuration.get('severity', 'Info')
+```
 
+### Dict: dict comprehensions
 
+BadCode: `code/dict_comprehension_bad_code.py`
 
+```python
+user_email = {}
+for user in users_list:
+    if user.email:
+        user_email[user.name] = user.email
+```
 
+Good Code: `code/dict_comprehension_good_code.py`
+
+```python
+user_email = {
+    user.name : user.email
+    for user in users_list
+    if user.email
+}
+```
+
+### String: string format
+
+Bad Code:
+
+```python
+def get_formatted_user_info_worst(user):
+    # Tedious to type and prone to conversion errors
+    return 'Name: ' + user.name + ', Age: ' + \
+           str(user.age) + ', Sex: ' + user.sex
+
+def get_formatted_user_info_slightly_better(user):
+    # No visible connection between the format string placeholders
+    # and values to use. Also, why do I have to know the type?
+    # Don't these types all have __str__ functions?
+    return 'Name: %s, Age: %i, Sex: %c' % (user.name, user.age, user.sex)
+```
+
+Good Code:
+
+```python
+def get_formatted_user_info(user):
+    # Clear and concise. At a glance I can tell exactly what
+    # the output should be. Note: this string could be returned
+    # directly, but the string itself is too long to fit on the
+    # page.
+    output = 'Name: {user.name}, Age: {user.age}, Sex: {user.sex}'.format(user=user)
+    return output
+```
+
+### String: `"".join`
+
+Bad Code:
+
+```python
+result_list = ['True', 'False', 'File not found']
+result_string = ''
+for result in result_list:
+    result_string += result
+```
+
+Good Code:
+
+```python
+result_list = ['True', 'False', 'File not found']
+result_string = ''.join(result_list)
+```
+
+### String: chain functions
+
+Bad Code:
+
+```python
+book_info = ' The Three Musketeers: Alexandre Dumas'
+formatted_book_info = book_info.strip()
+formatted_book_info = formatted_book_info.upper()
+formatted_book_info = formatted_book_info.replace(':', ' by')
+```
+
+Good Code: `code/string_chain_functions.py`
+
+```python
+book_info = ' The Three Musketeers: Alexandre Dumas'
+formatted_book_info = book_info.strip().upper().replace(':', ' by')
+```
 
 
 
