@@ -1,5 +1,7 @@
 # The Zen of Python
 
+URL: https://www.python.org/dev/peps/pep-0020/
+
 在Python Console中，输入：
 ```python
 import this

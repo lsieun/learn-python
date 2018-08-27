@@ -1,6 +1,14 @@
 # Python Summary
 
 
+print()
+
+    print(str(acc))
+    print(acc)
+    print(repr(acc))
+    print("{}".format(acc))
+    print("{!s}".format(acc))
+    print("{!r}".format(acc))
 
 
 ## Feature

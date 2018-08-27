@@ -156,6 +156,12 @@ result_string = ''.join(result_list)
 
 ### String: chain functions
 
+When applying a simple sequence of transformations on some datum(数据；资料), chaining the
+calls in a single expression is often more clear than creating a temporary variable
+for each step of the transformation. Too much chaining, however, can make your
+code harder to follow. “**No more than three chained functions**” is a good rule of
+thumb.
+
 Bad Code:
 
 ```python
@@ -173,7 +179,13 @@ formatted_book_info = book_info.strip().upper().replace(':', ' by')
 ```
 
 
+Use `''.startswith()` and `''.endswith()` instead of `string slicing` to check for prefixes or suffixes.
 
+Object type comparisons should always use `isinstance()` instead of comparing types directly.
+
+Yes: `if isinstance(obj, int):`
+
+No:  `if type(obj) is type(1):`
 
 
 
