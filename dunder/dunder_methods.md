@@ -2,6 +2,8 @@
 
 URL: https://dbader.org/blog/python-dunder-methods
 
+URL： https://docs.python.org/3/reference/datamodel.html#special-method-names
+
 
 ## What Are Dunder Methods?
 
