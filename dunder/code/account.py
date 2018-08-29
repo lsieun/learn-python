@@ -1,38 +1,3 @@
-# Enriching Your Python Classes With Dunder (Magic, Special) Methods
-
-URL: https://dbader.org/blog/python-dunder-methods
-
-
-## What Are Dunder Methods?
-
-In Python, **special methods** are a set of **predefined methods** you can use to enrich your classes. They are easy to recognize because they **start** and **end** with **double underscores**, for example `__init__` or `__str__`.
-
-> special method = predefined methods  
-> 格式： `__xx__`
-
-As it quickly became tiresome to say `under-under-method-under-under` Pythonistas adopted the term “**dunder methods**”, a short form of “`double under`.”
-
-> dunder = double under
-
-These “**dunders**” or “**special methods**” in Python are also sometimes called “**magic methods**.” But using this terminology can make them seem more complicated than they really are—at the end of the day there’s nothing “magical” about them. You should treat these methods like a normal language feature.
-
-> magic method is not recommended.
-
-## Enriching a Simple Account Class
-
-Throughout this article I will enrich a simple Python class with various dunder methods to unlock the following language features:
-
-- Initialization of new objects
-- Object representation
-- Enable iteration
-- Operator overloading (comparison)
-- Operator overloading (addition)
-- Method invocation
-- Context manager support (with statement)
-
-[`account.py`](code/account.py)
-
-```python
 #!/usr/bin/env python3
 # Last modified: 2018-08-26 13:04:23
 """This is the Account module.
@@ -153,17 +118,3 @@ if __name__ == '__main__':
 
     print("="*20, "call", "="*20)
     acc()
-
-```
-
-If you don’t want to hardcode "`Account`" as the name for the class you can also use `self.__class__.__name__` to access it programmatically.
-
-
-
-
-
-
-
-
-
-
