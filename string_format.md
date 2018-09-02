@@ -13,6 +13,22 @@ There are **two formatting methods** can be found in the official Python documen
 - 对齐（左对齐或右对齐）
 - new style: positional argument Vs keyword argument
 
+## print
+
+URL: https://docs.python.org/3/library/functions.html#print
+
+```python
+print(*objects, sep=' ', end='\n', file=sys.stdout, flush=False)
+```
+
+Print objects to the text stream file, separated by `sep` and followed by `end`. `sep`, `end`, `file` and `flush`, if present, must be given as **keyword arguments**.
+
+**All non-keyword arguments** are converted to strings like `str()` does and written to the stream, separated by `sep` and followed by `end`. Both `sep` and `end` must be strings; they can also be `None`, which means to use **the default values**. If no objects are given, `print()` will just write `end`.
+
+The `file` argument must be an object with a `write(string)` method; if it is not present or `None`, `sys.stdout` will be used. Since printed arguments are converted to text strings, `print()` cannot be used with **binary mode file objects**. For these, use `file.write(...)` instead.
+
+Whether output is buffered is usually determined by file, but if the `flush` keyword argument is `true`, the stream is forcibly flushed.
+
 ## print with seporator
 
 We used `print` with **a comma** separated list of values to print out the results.
@@ -31,6 +47,24 @@ All the values are separated by **blanks**, which is the default behaviour. We c
 459,0.098,44.982
 >>> print(q, p, p * q, sep=" :-) ")
 459 :-) 0.098 :-) 44.982
+```
+
+## print不换行
+
+使用`end`参数
+
+Demo:
+
+```python
+for i in range(10):
+    print(i, end=",")
+
+```
+
+Output:
+
+```txt
+0,1,2,3,4,5,6,7,8,9,
 ```
 
 ## Old Style: Using `%`
