@@ -119,3 +119,19 @@ It's possible to left or right justify data with the `format` method. To this en
 '        Spam & Eggs:   6.99'
 ```
 
+### Padding numbers
+
+For floating points the padding value represents the length of the complete output. In the example below we want our output to have at least 6 characters with 2 after the decimal point.
+
+- Old: `'%06.2f' % (3.141592653589793,)`
+- New: `'{:06.2f}'.format(3.141592653589793)`
+
+Output: `003.14`
+
+For integer values providing a precision doesn't make much sense and is actually forbidden in the new style (it will result in a ValueError).
+
+- Old: `'%04d' % (42,)`
+- New: `'{:04d}'.format(42)`
+
+Output: `0042`
+
