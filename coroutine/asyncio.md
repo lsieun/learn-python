@@ -31,28 +31,67 @@ Let’s for a moment consider a simple request-response. The code below fetches 
 import requests
 
 def get_content(url):
-    response = requests.get(url)
-    return response.txt
+    r = requests.get(url)
+    return r.text
+```
+
+FullCode:
+
+```python
+import requests
+import sys
+
+def get_content(url):
+    r = requests.get(url)
+    return r.text
+
+def main():
+    url = "https://httpbin.org/get"
+    txt = get_content(url)
+    print(txt)
+    return 0
+
+
+if __name__ == "__main__":
+    sys.exit(main())
+
+```
+
+Output:
+
+```txt
+{
+  "args": {}, 
+  "headers": {
+    "Accept": "*/*", 
+    "Accept-Encoding": "gzip, deflate", 
+    "Connection": "close", 
+    "Host": "httpbin.org", 
+    "User-Agent": "python-requests/2.18.4"
+  }, 
+  "origin": "123.121.10.146", 
+  "url": "https://httpbin.org/get"
+}
 ```
 
 Every time this code is called, it tries to fetch the response and till the time it has not received the response, it blocks all program execution. This is a bad thing. You don’t want such a wait time on say a high traffic server.
 
 ## Definitions
 
-The `asyncio` module provides a framework that revolves around **the event loop**. An event loop basically waits for something to happen and then acts on the event. It is responsible for handling such things as I/O and system events. **Asyncio actually has several loop implementations available to it**. The module will default to the one most likely to be the most efficient for the operating system it is running under; however you can explicitly choose the event loop if you so desire. An event loop basically says “when event A happens, react with function B”.
+The `asyncio` module provides a framework that revolves around **the event loop**. **An event loop** basically waits for something to happen and then acts on the **event**. It is responsible for handling such things as I/O and system events. **Asyncio actually has several loop implementations available to it**. The module will default to the one most likely to be the most efficient for the operating system it is running under; however you can explicitly choose the event loop if you so desire. An event loop basically says “when event A happens, react with function B”.
 
 > asyncio是围绕event loop来实现的framework。
 
-Think of a server as it waits for someone to come along and ask for a resource, such as a web page. If the website isn’t very popular, the server will be idle for a long time. But when it does get a hit, then the server needs to react. This reaction is known as event handling. When a user loads the web page, the server will check for and call one or more event handlers. Once those event handlers are done, they need to give control back to the event loop. To do this in Python, `asyncio` uses **coroutines**.
+Think of a server as it waits for someone to come along and ask for a resource, such as a web page. If the website isn’t very popular, the server will be idle for a long time. But when it does get a hit, then the server needs to react. This reaction is known as `event handling`. When a user loads the web page, the server will check for and call one or more event handlers. Once those **event handlers** are done, they need to give control back to **the event loop**. To do this in Python, `asyncio` uses **coroutines**.
 
 > asyncio在event loop和event handler之间控制流的让出使用的是coroutine。
 
-**A coroutine** is a special function that can give up control to its caller without losing its state. A coroutine is a consumer and an extension of a generator. One of their big benefits over threads is that they don’t use very much memory to execute. Note that when you call a coroutine function, it doesn’t actually execute. Instead it will return a coroutine object that you can pass to the event loop to have it executed either immediately or later on.
+**A coroutine** is a special function that can give up control to its caller without losing its state. A coroutine is a consumer and an extension of a generator. One of their big benefits over threads is that they don’t use very much memory to execute. Note that when you call **a coroutine function**, it doesn’t actually execute. Instead it will return a `coroutine` object that you can pass to **the event loop** to have it executed either immediately or later on.
 
 > 调用coroutine function，并不会直接执行，而是返回一个coroutine对象。 
 > 这个coroutine对象可以放到event loop上执行。 
 
-One other term you will likely run across when you are using the `asyncio` module is `future`. A `future` is basically an object that represents the result of work that hasn’t completed. **Your event loop** can watch `future` objects and wait for them to finish. When a `future` finishes, it is set to done. Asyncio also supports **locks** and **semaphores**.
+One other term you will likely run across when you are using the `asyncio` module is `future`. A `future` is basically an object that represents the result of work that hasn’t completed. **Your event loop** can watch `future` objects and wait for them to finish. When a `future` finishes, it is set to `done`. Asyncio also supports **locks** and **semaphores**.
 
 > 我的理解：（1）future对应了coroutine的对应结果；（2）future也是由event loop来改变其状态的。
 
@@ -82,7 +121,7 @@ async def my_coro():
 
 When you define a coroutine in this manner, you cannot use `yield` inside the coroutine function. Instead it must include a `return` or `await` statement used for returning values to the caller. Note that the `await` keyword can only be used inside an `async def` function.
 
-The `async` / `await` keywords can be considered an API to be used for asynchronous programming. The asyncio module is just a framework that happens to use `async` / `await` for programming asynchronously. There is actually a project called `curio`(https://github.com/dabeaz/curio) that proves this concept as a separate implementation of an event loop thats uses `async` / `await` underneath the covers.
+The `async` / `await` keywords can be considered an API to be used for asynchronous programming. The `asyncio` module is just a framework that happens to use `async` / `await` for programming asynchronously. There is actually a project called `curio`(https://github.com/dabeaz/curio) that proves this concept as a separate implementation of an event loop thats uses `async` / `await` underneath the covers.
 
 
 ## A Coroutine Example
@@ -220,28 +259,36 @@ Let’s look at a small piece of asyncio code.
 import asyncio
 import aiohttp
 
-@asyncio.coroutine
-def get_content(url):
-    response = yield from aiohttp.get(url)
-    return (yield from response.text())
+async def get_content(url):
+    async with aiohttp.request("GET", url) as resp:
+        txt = await resp.text()
+        return txt
 ```
 
-Here `aiohttp` is an asynchronous client and server which has some useful features web sockets, middleware and signals.
-
-We are `yield`ing the task of getting the page to `aiohttp`. Python 3.5 has further refined this syntax as follows.
+Full Code:
 
 ```python
+import asyncio
 import aiohttp
+
 async def get_content(url):
-    response = await aiohttp.get(url)
-    return (await response.text())
+    async with aiohttp.request("GET", url) as resp:
+        txt = await resp.text()
+        return txt
+
+
+if __name__ == "__main__":
+    event_loop: asyncio.SelectorEventLoop = asyncio.get_event_loop()
+    try:
+        url = "https://httpbin.org/get"
+        content = event_loop.run_until_complete(get_content(url))
+        print(content)
+    finally:
+        event_loop.close()
+
 ```
 
-So now instead of using the `coroutine` decorator, you simply use the keyword ‘`async`’. Similarly, instead of saying `yield from` you say ‘`await`’.
-
-This is much more concise and takes away all the confusion there was to the difference between ‘`yield`’ and ‘`yield from`’. So now anywhere you see the word `async`, you know the function will run **asynchronously**. The ‘pausing’ is done by using the ‘`await`’ keyword.
-
-You then use the above code with `asyncio` by running a loop as follows:
+Or
 
 ```python
 import aiohttp
@@ -262,17 +309,64 @@ This, in turn, is the core concept behind asyncio.
 
 One more thing. What do you do if you need to get the result of an `async` function in your normal synchronous code?
 
-You use `asyncio.Future()`. A `Future` represents the result of a function that is yet to complete. The `asyncio` event loop can watch for a Future object’s state, thus allowing your normal synchronous code to wait for the blocking part to finish some work.
+You use `asyncio.Future()`. A `Future` represents the result of a function that is yet to complete. **The asyncio event loop** can watch for a `Future` object’s state, thus allowing your normal synchronous code to wait for the blocking part to finish some work.
 
 Here’s an example that shows this.
 
+```python
+import asyncio
+
+def mark_complete(future: asyncio.Future, result):
+    future.set_result(result)
 
 
+if __name__ == "__main__":
+    event_loop: asyncio.SelectorEventLoop = asyncio.get_event_loop()
+    try:
+        task_to_complete = asyncio.Future()
+        print("type(task_to_complete) = {}".format(type(task_to_complete)))
+        event_loop.call_soon(mark_complete, task_to_complete, "my result")
+        event_loop.run_until_complete(task_to_complete)
+        result = task_to_complete.result()
+        print(result)
+    finally:
+        event_loop.close()
+
+```
+
+The state of the `Future` changes to ‘`done`’ when `future.set_result()` is called. Even after it is done, the instance of `Future` retains the **result**. This can be retrieved by calling the `result()` method on the `Future` instance as follows.
+
+```python
+task_to_complete.result()
+```
+
+If there are results from various sources, you can use `asyncio.gather()` to get all the results.
+
+```python
+    results = await asyncio.gather(
+        phase1(),
+        phase2(),
+    )
+```
+
+Finally, a `Future` can also invoke **callbacks** when it completes. **Callbacks** are invoked **in the order they are registered**.
+
+```python
+def callback(future, n):
+    print('{}: future done: {}'.format(n, future.result()))
 
 
+async def register_callbacks(all_done):
+    print('registering callbacks on future')
+    all_done.add_done_callback(functools.partial(callback, n=1))
+    all_done.add_done_callback(functools.partial(callback, n=2))
 
 
-
+async def main(all_done):
+    await register_callbacks(all_done)
+    print('setting result of future')
+    all_done.set_result('the result')
+```
 
 
 
