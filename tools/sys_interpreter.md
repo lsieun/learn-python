@@ -1,4 +1,4 @@
-# sys interpreter
+# sys の Interpreter
 
 ## Interpreter Version and Implementation
 
@@ -45,36 +45,3 @@ includes `bin` and `lib` directories for executables and installed modules, resp
 '/home/john/Software/anaconda3'
 ```
 
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
-
-
-```python
-
-```
-
-
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
-
-```python
-
-```
