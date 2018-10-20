@@ -29,7 +29,33 @@ python list comprehensions https://www.datacamp.com/community/tutorials/python-l
 
 讲一个课程的时候，说一下它的前置知识是什么。
 
+一个思路：
+
+dunder method -->
+
+    __str__() & __repr()__
+    __enter__ & exit__ with open() as file: context manager file descriptor
+
+数据结构：
+generator和list的比较
+
+generator
+
+coroutine
+
+    myos
 
 
 
+cocurrency
 
+    thread：要解决的核心问题是什么呢？
+    process
+    coroutine
+
+
+socket：是实现线程（机器）之间的互相通信。以上都是在单机的情况下运行。
+
+程序 ＝ 数据结构 ＋ 算法
+
+算法，本身也是一种数据
